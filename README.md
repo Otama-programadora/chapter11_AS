@@ -12,6 +12,7 @@ AddActivityクラスの26行目 realm.executeTransactionについて
 　同期処理のとき→「UIスレッドでのトランザクションが不能になりました」のエラーメッセージが出る
 
 【行ったこと】
+
 1.CustomApplicationクラスでのRealmの初期設定で「.allowWritesOnUiThread(true)」を追加。
 realm.executeTransactionは同期処理で走らせると期待通りのプログラムができた。
 
