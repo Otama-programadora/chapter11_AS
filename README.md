@@ -7,6 +7,7 @@ Google mapとRealm データベースを組合せた地図アプリの作成。
 4. Google mapにマーカーを表示。マーカーの内容は「いつ・どこで・何を書いたか」
 
 【問題点】
+
 AddActivityクラスの26行目 realm.executeTransactionについて
 　同期処理のとき→「UIスレッドでのトランザクションが不能になりました」
 　非同期処理(~Async)のとき→「アクセスエラーです。Realm objectsは生成されたスレッドからのみアクセス可能です」
