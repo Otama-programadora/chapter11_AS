@@ -9,14 +9,16 @@ Google mapとRealm データベースを組合せた地図アプリの作成。
 【問題点】
 AddActivityクラスの26行目 realm.executeTransactionについて
 
-　同期処理のとき→「UIスレッドでのトランザクションが不能になりました」
- 
-　非同期処理(~Async)のとき→「アクセスエラーです。Realm objectsは生成されたスレッドからのみアクセス可能です」
-のエラーメッセージが出る。
+　同期処理のとき→「UIスレッドでのトランザクションが不能になりました」のエラーメッセージが出る
 
 【行ったこと】
-CustomApplicationクラスでのRealmの初期設定で「.allowWritesOnUiThread(true)」を追加。
+1.CustomApplicationクラスでのRealmの初期設定で「.allowWritesOnUiThread(true)」を追加。
 realm.executeTransactionは同期処理で走らせると期待通りのプログラムができた。
 
+2.Asyncのとき：「アクセスエラーです。Realm オブジェクトは生成されたスレッドからのみアクセス可能です」
+
+3.Realm オブジェクトをexecuteTransactionの中で生成したらアプリが立ち上がらなくなった
+
 【疑問】
-realm.executeTransactionが非同期ならUIスレッドではトランザクションは起こらないはずなのに、なぜまた別のエラーメッセージが出るのか？
+1.は初期設定を変えているためあまり良い方法ではなさそう。
+それ以外の解決方法はないか？
